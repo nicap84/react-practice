@@ -1,11 +1,13 @@
 import "./App.css";
-import Book from "./components/Book.jsx";
-import { booksData } from "./data.js";
+import RandomQuote from "./components/quotes_app/components/RandomQuote.jsx";
+// import Book from "./components/Book.jsx";
+// import { booksData } from "./data.js";
 
 function App() {
   return (
     <div className="App">
-      {booksData.items.map((book, index) => (
+      <RandomQuote />
+      {/*booksData.items.map((book, index) => (
         <Book
           Key={index}
           title={book.volume.title}
@@ -14,7 +16,7 @@ function App() {
           description={book.volume.description}
           image={book.volume.image}
         />
-      ))}
+      ))*/}
     </div>
   );
 }
