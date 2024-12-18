@@ -217,16 +217,14 @@ function RandomQuote() {
   const [quote, setQuote] = useState(quotes[0]);
 
   const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * 50);
-    return quotes[randomIndex];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setQuote(quotes[randomIndex]);
   };
 
   return (
     <div>
       <h1>Random Quotes</h1>
-      <button onClick={() => setQuote(getRandomQuote)}>
-        Get a random Quote
-      </button>
+      <button onClick={getRandomQuote}>Get a random Quote</button>
       <h2>{quote.author}</h2>
       <p>{quote.quote}</p>
     </div>
