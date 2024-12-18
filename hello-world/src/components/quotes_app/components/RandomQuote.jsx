@@ -224,12 +224,10 @@ function RandomQuote() {
   return (
     <div className="container mt-2">
       <div className="card">
-        <div className="card-header">
-          <h1>Random Quotes</h1>
-        </div>
         <div className="card-body">
-          <h2>{quote.author}</h2>
-          <p>{quote.quote}</p>
+          <h1 className="card-header">Random Quotes</h1>
+          <h2 className="card-text">{quote.author}</h2>
+          <footer className="blockquote-footer">{quote.quote}</footer>
           <button className="btn btn-primary" onClick={getRandomQuote}>
             Get a random Quote
           </button>
