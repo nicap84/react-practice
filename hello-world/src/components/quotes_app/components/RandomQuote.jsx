@@ -222,11 +222,19 @@ function RandomQuote() {
   };
 
   return (
-    <div>
-      <h1>Random Quotes</h1>
-      <button onClick={getRandomQuote}>Get a random Quote</button>
-      <h2>{quote.author}</h2>
-      <p>{quote.quote}</p>
+    <div className="container mt-2">
+      <div className="card">
+        <div className="card-header">
+          <h1>Random Quotes</h1>
+        </div>
+        <div className="card-body">
+          <h2>{quote.author}</h2>
+          <p>{quote.quote}</p>
+          <button className="btn btn-primary" onClick={getRandomQuote}>
+            Get a random Quote
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

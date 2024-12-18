@@ -1,4 +1,5 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import RandomQuote from "./components/quotes_app/components/RandomQuote.jsx";
 // import Book from "./components/Book.jsx";
 // import { booksData } from "./data.js";
