@@ -16,7 +16,9 @@ export default function Book({
       <span>Subtitle: {subtitle}</span>
       <h3>Author: {author}</h3>
       <p>description: {description}</p>
-      <button onClick={() => console.log("hello world")}>Mark as read</button>
+      <button onClick={() => setIsRead(!isRead)}>
+        {isRead ? "Read" : "Unread"}
+      </button>
     </div>
   );
 }
