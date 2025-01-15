@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RandomQuote from "./components/quotes_app/components/RandomQuote.jsx";
+//import RandomQuote from "./components/quotes_app/components/RandomQuote.jsx";
 import FormName from "./components/FormName.jsx";
 const quotes = [
   {
@@ -215,6 +215,7 @@ const quotes = [
     quote: "Luck is what happens when preparation meets opportunity.",
   },
 ];
+import AddGRoceries from "./components/GroceryList.jsx";
 // import Book from "./components/Book.jsx";
 // import { booksData } from "./data.js";
 
@@ -254,7 +255,7 @@ function App() {
 
   return (
     <div className="App">
-      <FormName />
+      <AddGRoceries />
 
       {/* <IncrementButton onIncrease={increment} count={count} />
       <DecrementButton onDecrease={decrement} count={count} />

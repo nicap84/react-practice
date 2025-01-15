@@ -24,6 +24,8 @@ export default function FormName() {
     if (formData.name && formData.age && formData.profession) {
       setProfiles([...profiles, formData]);
       setFormaData({ name: "", age: "", profession: "" });
+    } else {
+      alert("Please fill all the fields");
     }
   }
 
