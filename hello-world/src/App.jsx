@@ -215,11 +215,15 @@ const quotes = [
     quote: "Luck is what happens when preparation meets opportunity.",
   },
 ];
-import AddGRoceries from "./components/GroceryList.jsx";
+import AddGRoceriesCopy from "./components/grocery_list/components/Grocery_List_copy.jsx";
+import GroceryNav from "./components/grocery_list/components/Grocery_Nav.jsx";
+import GroceryFooter from "./components/grocery_list/components/Grocery_Footer.jsx";
+import GroceryForm from "./components/grocery_list/components/Grocery_Form.jsx";
 // import Book from "./components/Book.jsx";
 // import { booksData } from "./data.js";
 
 function App() {
+  // ************************************************************** //
   const [count, setCount] = useState(0);
   const [quote, setQuote] = useState(quotes[0]);
   const [color, setColor] = useState("bg-dark");
@@ -253,9 +257,56 @@ function App() {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  // ************************************************************** //
+
+  const [groceries, setGroceries] = useState([]);
+  const [groceriesInput, setGroceriesInput] = useState("");
+
+  function handleOnChange(event) {
+    setGroceriesInput(event.target.value);
+  }
+
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    const newGrocery = {
+      id: Date.now(),
+      name: groceriesInput,
+      bought: false,
+    };
+    setGroceries([newGrocery, ...groceries]);
+    setGroceriesInput("");
+  }
+
+  function toogleBought(id) {
+    const updatedGRoceries = groceries.map((grocery) => {
+      if (grocery.id === id) {
+        grocery.bought = !grocery.bought;
+      }
+      return grocery;
+    });
+    setGroceries(updatedGRoceries);
+  }
+
+  function handleDeleteGrocery(id) {
+    const remainingGroceries = groceries.filter((item) => item.id !== id);
+    console.log(remainingGroceries);
+    setGroceries(remainingGroceries);
+  }
+
   return (
-    <div className="App">
-      <AddGRoceries />
+    <div className="container pt-2">
+      <GroceryNav />
+      <GroceryForm
+        item={groceriesInput}
+        handleOnSubmit={handleOnSubmit}
+        handleOnChange={handleOnChange}
+      />
+      <AddGRoceriesCopy
+        items={groceries}
+        handleOnToggle={toogleBought}
+        handleDeleteGrocery={handleDeleteGrocery}
+      />
+      <GroceryFooter items={groceries} />
 
       {/* <IncrementButton onIncrease={increment} count={count} />
       <DecrementButton onDecrease={decrement} count={count} />
@@ -265,7 +316,7 @@ function App() {
           Key={index}
           title={book.volume.title}
           subtitle={book.volume.subtitle}
-          author={book.volume.authors}
+          author={book.volume.authors}  
           description={book.volume.description}
           image={book.volume.image}
         />
