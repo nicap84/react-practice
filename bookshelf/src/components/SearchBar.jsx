@@ -6,6 +6,7 @@ function SearchBar({ onSearch }) {
     event.preventDefault();
     console.log("Search term: ", searchTerm);
     onSearch(searchTerm);
+    setSearchTerm("");
   }
 
   return (

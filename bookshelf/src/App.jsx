@@ -1,27 +1,34 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import BookList from "./components/BookList";
+import { useBooks } from "./services/use-books";
 
 function App() {
-  const [books, setBooks] = useState([]);
+  /*const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("Java");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getBooks();
+    fetchData();
   }, [searchTerm]);
 
-  const getBooks = async () => {
-    // url=https://www.googleapis.com/books/v1/volumes?q=javascript&maxResults=40
-    const res = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
-    );
-    const data = await res.json();
-    console.log("data: ", data.items);
-    setBooks(data.items || []);
-  };
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const items = await getBooks(searchTerm);
+      console.log("items", items);
+      setBooks(items);
+    } catch (error) {
+      console.log("Error fetching books", error);
+    } finally {
+      setLoading(false);
+    }
+  };*/
+
+  const { books, loading, setSearchTerm } = useBooks("Java");
 
   const handleSearch = (query) => {
     setSearchTerm(query);
@@ -31,7 +38,13 @@ function App() {
   return (
     <>
       <NavBar onSearch={handleSearch} />
-      <BookList books={books} />
+      {loading ? (
+        <p className="placeholder-glow display-3 text-body-secondary">
+          <span className="placeholder col-12">Loading</span>
+        </p>
+      ) : (
+        <BookList books={books} />
+      )}
       <Footer />
     </>
   );
